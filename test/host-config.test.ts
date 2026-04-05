@@ -490,7 +490,7 @@ describe('host config correctness', () => {
 
   test('openclaw has includeSkills for native methodology skills', () => {
     expect(openclaw.generation.includeSkills).toBeDefined();
-    expect(openclaw.generation.includeSkills).toContain('office-hours');
+    expect(openclaw.generation.includeSkills).toContain('ghee');
     expect(openclaw.generation.includeSkills).toContain('plan-ceo-review');
     expect(openclaw.generation.includeSkills).toContain('investigate');
     expect(openclaw.generation.includeSkills).toContain('retro');

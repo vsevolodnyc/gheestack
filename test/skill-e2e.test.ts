@@ -3137,7 +3137,7 @@ Write the full output (including the GATE verdict) to ${codexDir}/codex-output.m
 
 // --- Office Hours Spec Review E2E ---
 
-describeIfSelected('Office Hours Spec Review E2E', ['office-hours-spec-review'], () => {
+describeIfSelected('Office Hours Spec Review E2E', ['ghee-spec-review'], () => {
   let ohDir: string;
 
   beforeAll(() => {
@@ -3152,11 +3152,11 @@ describeIfSelected('Office Hours Spec Review E2E', ['office-hours-spec-review'],
     run('git', ['add', '.']);
     run('git', ['commit', '-m', 'init']);
 
-    // Copy office-hours skill
-    fs.mkdirSync(path.join(ohDir, 'office-hours'), { recursive: true });
+    // Copy ghee skill
+    fs.mkdirSync(path.join(ohDir, 'ghee'), { recursive: true });
     fs.copyFileSync(
-      path.join(ROOT, 'office-hours', 'SKILL.md'),
-      path.join(ohDir, 'office-hours', 'SKILL.md'),
+      path.join(ROOT, 'ghee', 'SKILL.md'),
+      path.join(ohDir, 'ghee', 'SKILL.md'),
     );
   });
 
@@ -3164,9 +3164,9 @@ describeIfSelected('Office Hours Spec Review E2E', ['office-hours-spec-review'],
     try { fs.rmSync(ohDir, { recursive: true, force: true }); } catch {}
   });
 
-  test('/office-hours SKILL.md contains spec review loop', async () => {
+  test('/ghee SKILL.md contains spec review loop', async () => {
     const result = await runSkillTest({
-      prompt: `Read office-hours/SKILL.md. I want to understand the spec review loop.
+      prompt: `Read ghee/SKILL.md. I want to understand the spec review loop.
 
 Summarize what the "Spec Review Loop" section does — specifically:
 1. How many dimensions does the reviewer check?
@@ -3178,12 +3178,12 @@ Write your summary to ${ohDir}/spec-review-summary.md`,
       workingDirectory: ohDir,
       maxTurns: 8,
       timeout: 120_000,
-      testName: 'office-hours-spec-review',
+      testName: 'ghee-spec-review',
       runId,
     });
 
-    logCost('/office-hours spec review', result);
-    recordE2E('/office-hours-spec-review', 'Office Hours Spec Review E2E', result);
+    logCost('/ghee spec review', result);
+    recordE2E('/ghee-spec-review', 'Office Hours Spec Review E2E', result);
     expect(result.exitReason).toBe('success');
 
     const summaryPath = path.join(ohDir, 'spec-review-summary.md');
@@ -3228,10 +3228,10 @@ describeIfSelected('Plan CEO Review Benefits-From E2E', ['plan-ceo-review-benefi
 
   test('/plan-ceo-review SKILL.md contains prerequisite skill offer', async () => {
     const result = await runSkillTest({
-      prompt: `Read plan-ceo-review/SKILL.md. Search for sections about "Prerequisite" or "office-hours" or "design doc found".
+      prompt: `Read plan-ceo-review/SKILL.md. Search for sections about "Prerequisite" or "ghee" or "design doc found".
 
 Summarize what happens when no design doc is found — specifically:
-1. Is /office-hours offered as a prerequisite?
+1. Is /ghee offered as a prerequisite?
 2. What options does the user get?
 3. Is there a mid-session detection for when the user seems lost?
 

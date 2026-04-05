@@ -191,7 +191,7 @@ tool as your FIRST action. Do NOT answer directly, do NOT use other tools first.
 The skill has specialized workflows that produce better results than ad-hoc answers.
 
 Key routing rules:
-- Product ideas, "is this worth building", brainstorming → invoke office-hours
+- Product ideas, "is this worth building", brainstorming → invoke ghee
 - Bugs, errors, "why is this broken", 500 errors → invoke investigate
 - Ship, deploy, push, create PR → invoke ship
 - QA, test the site, find bugs → invoke qa
@@ -602,7 +602,7 @@ ls src/ app/ pages/ components/ 2>/dev/null | head -30
 
 ```bash
 setopt +o nomatch 2>/dev/null || true
-ls ~/.gstack/projects/$SLUG/*office-hours* 2>/dev/null | head -5
+ls ~/.gstack/projects/$SLUG/*ghee* 2>/dev/null | head -5
 ```
 
 If DESIGN.md exists, tell the user: "I'll follow your design system in DESIGN.md by
@@ -620,7 +620,7 @@ like how this looks," screenshot the current page and use `$D evolve` instead of
 `$D variants` to generate improvement variants from the existing design.
 
 **AskUserQuestion with pre-filled context:** Pre-fill what you inferred from the codebase,
-DESIGN.md, and office-hours output. Then ask for what's missing. Frame as ONE question
+DESIGN.md, and ghee output. Then ask for what's missing. Frame as ONE question
 covering all gaps:
 
 > "Here's what I know: [pre-filled context]. I'm missing [gaps].

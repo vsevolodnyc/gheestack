@@ -979,7 +979,7 @@ describe('Retro plan completion section', () => {
 describe('Plan status footer in preamble', () => {
   test('preamble contains plan status footer', () => {
     // Read any skill that uses PREAMBLE
-    const content = fs.readFileSync(path.join(ROOT, 'office-hours', 'SKILL.md'), 'utf-8');
+    const content = fs.readFileSync(path.join(ROOT, 'ghee', 'SKILL.md'), 'utf-8');
     expect(content).toContain('Plan Status Footer');
     expect(content).toContain('GSTACK REVIEW REPORT');
     expect(content).toContain('gstack-review-read');
@@ -992,7 +992,7 @@ describe('Plan status footer in preamble', () => {
 
 describe('Skill invocation during plan mode in preamble', () => {
   test('preamble contains skill invocation plan mode section', () => {
-    const content = fs.readFileSync(path.join(ROOT, 'office-hours', 'SKILL.md'), 'utf-8');
+    const content = fs.readFileSync(path.join(ROOT, 'ghee', 'SKILL.md'), 'utf-8');
     expect(content).toContain('Skill Invocation During Plan Mode');
     expect(content).toContain('precedence over generic plan mode behavior');
     expect(content).toContain('Do not continue the workflow');
@@ -1003,7 +1003,7 @@ describe('Skill invocation during plan mode in preamble', () => {
 // --- {{SPEC_REVIEW_LOOP}} resolver tests ---
 
 describe('SPEC_REVIEW_LOOP resolver', () => {
-  const content = fs.readFileSync(path.join(ROOT, 'office-hours', 'SKILL.md'), 'utf-8');
+  const content = fs.readFileSync(path.join(ROOT, 'ghee', 'SKILL.md'), 'utf-8');
 
   test('contains all 5 review dimensions', () => {
     for (const dim of ['Completeness', 'Consistency', 'Clarity', 'Scope', 'Feasibility']) {
@@ -1039,7 +1039,7 @@ describe('SPEC_REVIEW_LOOP resolver', () => {
 // --- {{DESIGN_SKETCH}} resolver tests ---
 
 describe('DESIGN_SKETCH resolver', () => {
-  const content = fs.readFileSync(path.join(ROOT, 'office-hours', 'SKILL.md'), 'utf-8');
+  const content = fs.readFileSync(path.join(ROOT, 'ghee', 'SKILL.md'), 'utf-8');
 
   test('references DESIGN.md for design system constraints', () => {
     expect(content).toContain('DESIGN.md');
@@ -1069,10 +1069,10 @@ describe('DESIGN_SKETCH resolver', () => {
 // --- {{CODEX_SECOND_OPINION}} resolver tests ---
 
 describe('CODEX_SECOND_OPINION resolver', () => {
-  const content = fs.readFileSync(path.join(ROOT, 'office-hours', 'SKILL.md'), 'utf-8');
-  const codexContent = fs.readFileSync(path.join(ROOT, '.agents', 'skills', 'gstack-office-hours', 'SKILL.md'), 'utf-8');
+  const content = fs.readFileSync(path.join(ROOT, 'ghee', 'SKILL.md'), 'utf-8');
+  const codexContent = fs.readFileSync(path.join(ROOT, '.agents', 'skills', 'gstack-ghee', 'SKILL.md'), 'utf-8');
 
-  test('Phase 3.5 section appears in office-hours SKILL.md', () => {
+  test('Phase 3.5 section appears in ghee SKILL.md', () => {
     expect(content).toContain('Phase 3.5: Cross-Model Second Opinion');
   });
 
@@ -1127,7 +1127,7 @@ describe('Codex filesystem boundary', () => {
     'ship',          // /ship — adversarial step resolver
     'plan-eng-review',  // outside voice resolver
     'plan-ceo-review',  // outside voice resolver
-    'office-hours',     // second opinion resolver
+    'ghee',     // second opinion resolver
   ];
 
   const BOUNDARY_MARKER = 'Do NOT read or execute any';
@@ -1185,12 +1185,12 @@ describe('BENEFITS_FROM resolver', () => {
 
   test('plan-ceo-review contains prerequisite skill offer', () => {
     expect(ceoContent).toContain('Prerequisite Skill Offer');
-    expect(ceoContent).toContain('/office-hours');
+    expect(ceoContent).toContain('/ghee');
   });
 
   test('plan-eng-review contains prerequisite skill offer', () => {
     expect(engContent).toContain('Prerequisite Skill Offer');
-    expect(engContent).toContain('/office-hours');
+    expect(engContent).toContain('/ghee');
   });
 
   test('offer includes graceful decline', () => {
@@ -1208,8 +1208,8 @@ describe('BENEFITS_FROM resolver', () => {
   });
 
   test('inline invocation — read-and-follow path present', () => {
-    expect(ceoContent).toContain('office-hours/SKILL.md');
-    expect(engContent).toContain('office-hours/SKILL.md');
+    expect(ceoContent).toContain('ghee/SKILL.md');
+    expect(engContent).toContain('ghee/SKILL.md');
   });
 
   test('BENEFITS_FROM delegates to INVOKE_SKILL pattern', () => {
@@ -1225,9 +1225,9 @@ describe('BENEFITS_FROM resolver', () => {
 describe('INVOKE_SKILL resolver', () => {
   const ceoContent = fs.readFileSync(path.join(ROOT, 'plan-ceo-review', 'SKILL.md'), 'utf-8');
 
-  test('plan-ceo-review uses INVOKE_SKILL for mid-session office-hours fallback', () => {
+  test('plan-ceo-review uses INVOKE_SKILL for mid-session ghee fallback', () => {
     // The mid-session detection path should use INVOKE_SKILL-generated prose
-    expect(ceoContent).toContain('office-hours/SKILL.md');
+    expect(ceoContent).toContain('ghee/SKILL.md');
     expect(ceoContent).toContain('Follow its instructions from top to bottom');
   });
 
@@ -1242,9 +1242,9 @@ describe('INVOKE_SKILL resolver', () => {
     expect(ceoContent).toContain('Could not load');
   });
 
-  test('template uses {{INVOKE_SKILL:office-hours}} placeholder', () => {
+  test('template uses {{INVOKE_SKILL:ghee}} placeholder', () => {
     const tmpl = fs.readFileSync(path.join(ROOT, 'plan-ceo-review', 'SKILL.md.tmpl'), 'utf-8');
-    expect(tmpl).toContain('{{INVOKE_SKILL:office-hours}}');
+    expect(tmpl).toContain('{{INVOKE_SKILL:ghee}}');
   });
 });
 
@@ -1284,7 +1284,7 @@ describe('CHANGELOG_WORKFLOW resolver', () => {
 
 describe('parameterized resolver support', () => {
   test('gen-skill-docs regex handles colon-separated args', () => {
-    // Verify the template containing {{INVOKE_SKILL:office-hours}} was processed
+    // Verify the template containing {{INVOKE_SKILL:ghee}} was processed
     // without leaving unresolved placeholders
     const ceoContent = fs.readFileSync(path.join(ROOT, 'plan-ceo-review', 'SKILL.md'), 'utf-8');
     expect(ceoContent).not.toMatch(/\{\{INVOKE_SKILL:[^}]+\}\}/);
@@ -1338,7 +1338,7 @@ describe('preamble routing injection', () => {
   });
 
   test('routing section content includes key routing rules', () => {
-    expect(shipContent).toContain('invoke office-hours');
+    expect(shipContent).toContain('invoke ghee');
     expect(shipContent).toContain('invoke investigate');
     expect(shipContent).toContain('invoke ship');
     expect(shipContent).toContain('invoke qa');
@@ -1422,7 +1422,7 @@ describe('DESIGN_HARD_RULES resolver', () => {
 // --- Extended DESIGN_SKETCH resolver tests ---
 
 describe('DESIGN_SKETCH extended with outside voices', () => {
-  const content = fs.readFileSync(path.join(ROOT, 'office-hours', 'SKILL.md'), 'utf-8');
+  const content = fs.readFileSync(path.join(ROOT, 'ghee', 'SKILL.md'), 'utf-8');
 
   test('contains outside design voices step', () => {
     expect(content).toContain('Outside design voices');
@@ -1610,8 +1610,8 @@ describe('Codex generation (--host codex)', () => {
   });
 
   test('multiline descriptions preserved in Codex output', () => {
-    // office-hours has a multiline description — verify it survives the frontmatter transform
-    const content = fs.readFileSync(path.join(AGENTS_DIR, 'gstack-office-hours', 'SKILL.md'), 'utf-8');
+    // ghee has a multiline description — verify it survives the frontmatter transform
+    const content = fs.readFileSync(path.join(AGENTS_DIR, 'gstack-ghee', 'SKILL.md'), 'utf-8');
     const fmEnd = content.indexOf('\n---', 4);
     const frontmatter = content.slice(4, fmEnd);
     // Description should span multiple lines (block scalar)
@@ -2517,7 +2517,7 @@ describe('codex commands must not use inline $(git rev-parse --show-toplevel) fo
 // ─── Learnings + Confidence Resolver Tests ─────────────────────
 
 describe('LEARNINGS_SEARCH resolver', () => {
-  const SEARCH_SKILLS = ['review', 'ship', 'plan-eng-review', 'investigate', 'office-hours', 'plan-ceo-review'];
+  const SEARCH_SKILLS = ['review', 'ship', 'plan-eng-review', 'investigate', 'ghee', 'plan-ceo-review'];
 
   for (const skill of SEARCH_SKILLS) {
     test(`${skill} generated SKILL.md contains learnings search`, () => {
@@ -2616,8 +2616,8 @@ describe('CONFIDENCE_CALIBRATION resolver', () => {
   });
 
   test('skills without confidence calibration do NOT contain it', () => {
-    // office-hours and retro do NOT use confidence calibration
-    for (const skill of ['office-hours', 'retro']) {
+    // ghee and retro do NOT use confidence calibration
+    for (const skill of ['ghee', 'retro']) {
       const content = fs.readFileSync(path.join(ROOT, skill, 'SKILL.md'), 'utf-8');
       expect(content).not.toContain('## Confidence Calibration');
     }

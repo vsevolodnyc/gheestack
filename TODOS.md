@@ -511,7 +511,7 @@ Shipped: Default model changed to Sonnet for structure tests (~30), Opus retaine
 
 **Why:** Cross-team design discovery at scale. Local `~/.gstack/projects/$SLUG/` keyword-grep discovery works for same-machine users now, but Supabase sync makes it work across the whole team. Duplicate ideas surface, everyone sees what's been explored.
 
-**Context:** /office-hours writes design docs to `~/.gstack/projects/$SLUG/`. The team store already syncs test plans, retro snapshots, QA reports. Design docs follow the same pattern — just add a sync adapter.
+**Context:** /ghee writes design docs to `~/.gstack/projects/$SLUG/`. The team store already syncs test plans, retro snapshots, QA reports. Design docs follow the same pattern — just add a sync adapter.
 
 **Effort:** S
 **Priority:** P2
@@ -519,13 +519,13 @@ Shipped: Default model changed to Sonnet for structure tests (~30), Opus retaine
 
 ### /yc-prep skill
 
-**What:** Skill that helps founders prepare their YC application after /office-hours identifies strong signal. Pulls from the design doc, structures answers to YC app questions, runs a mock interview.
+**What:** Skill that helps founders prepare their YC application after /ghee identifies strong signal. Pulls from the design doc, structures answers to YC app questions, runs a mock interview.
 
-**Why:** Closes the loop. /office-hours identifies the founder, /yc-prep helps them apply well. The design doc already contains most of the raw material for a YC application.
+**Why:** Closes the loop. /ghee identifies the founder, /yc-prep helps them apply well. The design doc already contains most of the raw material for a YC application.
 
 **Effort:** M (human: ~2 weeks / CC: ~2 hours)
 **Priority:** P2
-**Depends on:** office-hours founder discovery engine shipping first
+**Depends on:** ghee founder discovery engine shipping first
 
 ## Design Review
 

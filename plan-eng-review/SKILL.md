@@ -10,7 +10,7 @@ description: |
   Proactively suggest when the user has a plan or design doc and is about to
   start coding — to catch architecture issues before implementation. (gstack)
   Voice triggers (speech-to-text aliases): "tech review", "technical review", "plan engineering review".
-benefits-from: [office-hours]
+benefits-from: [ghee]
 allowed-tools:
   - Read
   - Write
@@ -194,7 +194,7 @@ tool as your FIRST action. Do NOT answer directly, do NOT use other tools first.
 The skill has specialized workflows that produce better results than ad-hoc answers.
 
 Key routing rules:
-- Product ideas, "is this worth building", brainstorming → invoke office-hours
+- Product ideas, "is this worth building", brainstorming → invoke ghee
 - Bugs, errors, "why is this broken", 500 errors → invoke investigate
 - Ship, deploy, push, create PR → invoke ship
 - QA, test the site, find bugs → invoke qa
@@ -577,26 +577,26 @@ skill before proceeding.
 
 Say to the user via AskUserQuestion:
 
-> "No design doc found for this branch. `/office-hours` produces a structured problem
+> "No design doc found for this branch. `/ghee` produces a structured problem
 > statement, premise challenge, and explored alternatives — it gives this review much
 > sharper input to work with. Takes about 10 minutes. The design doc is per-feature,
 > not per-product — it captures the thinking behind this specific change."
 
 Options:
-- A) Run /office-hours now (we'll pick up the review right after)
+- A) Run /ghee now (we'll pick up the review right after)
 - B) Skip — proceed with standard review
 
 If they skip: "No worries — standard review. If you ever want sharper input, try
-/office-hours first next time." Then proceed normally. Do not re-offer later in the session.
+/ghee first next time." Then proceed normally. Do not re-offer later in the session.
 
 If they choose A:
 
-Say: "Running /office-hours inline. Once the design doc is ready, I'll pick up
+Say: "Running /ghee inline. Once the design doc is ready, I'll pick up
 the review right where we left off."
 
-Read the `/office-hours` skill file at `~/.claude/skills/gstack/office-hours/SKILL.md` using the Read tool.
+Read the `/ghee` skill file at `~/.claude/skills/gstack/ghee/SKILL.md` using the Read tool.
 
-**If unreadable:** Skip with "Could not load /office-hours — skipping." and continue.
+**If unreadable:** Skip with "Could not load /ghee — skipping." and continue.
 
 Follow its instructions from top to bottom, **skipping these sections** (already handled by the parent skill):
 - Preamble (run first)
@@ -614,7 +614,7 @@ Follow its instructions from top to bottom, **skipping these sections** (already
 
 Execute every other section at full depth. When the loaded skill's instructions are complete, continue with the next step below.
 
-After /office-hours completes, re-run the design doc check:
+After /ghee completes, re-run the design doc check:
 ```bash
 setopt +o nomatch 2>/dev/null || true  # zsh compat
 SLUG=$(~/.claude/skills/gstack/browse/bin/remote-slug 2>/dev/null || basename "$(git rev-parse --show-toplevel 2>/dev/null || pwd)")

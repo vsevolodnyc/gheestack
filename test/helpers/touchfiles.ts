@@ -69,7 +69,7 @@ export const E2E_TOUCHFILES: Record<string, string[]> = {
   'review-army-consensus':        ['review/**', 'scripts/resolvers/review-army.ts'],
 
   // Office Hours
-  'office-hours-spec-review':  ['office-hours/**', 'scripts/gen-skill-docs.ts'],
+  'ghee-spec-review':  ['ghee/**', 'scripts/gen-skill-docs.ts'],
 
   // Plan reviews
   'plan-ceo-review':           ['plan-ceo-review/**'],
@@ -80,7 +80,7 @@ export const E2E_TOUCHFILES: Record<string, string[]> = {
   'plan-review-report':        ['plan-eng-review/**', 'scripts/gen-skill-docs.ts'],
 
   // Codex offering verification
-  'codex-offered-office-hours':  ['office-hours/**', 'scripts/gen-skill-docs.ts'],
+  'codex-offered-ghee':  ['ghee/**', 'scripts/gen-skill-docs.ts'],
   'codex-offered-ceo-review':    ['plan-ceo-review/**', 'scripts/gen-skill-docs.ts'],
   'codex-offered-design-review': ['plan-design-review/**', 'scripts/gen-skill-docs.ts'],
   'codex-offered-eng-review':    ['plan-eng-review/**', 'scripts/gen-skill-docs.ts'],
@@ -229,7 +229,7 @@ export const E2E_TIERS: Record<string, 'gate' | 'periodic'> = {
   'review-army-consensus': 'periodic',      // Multi-specialist agreement
 
   // Office Hours
-  'office-hours-spec-review': 'gate',
+  'ghee-spec-review': 'gate',
 
   // Plan reviews — gate for cheap functional, periodic for Opus quality
   'plan-ceo-review': 'periodic',
@@ -241,7 +241,7 @@ export const E2E_TIERS: Record<string, 'gate' | 'periodic'> = {
   'plan-review-report': 'gate',
 
   // Codex offering verification
-  'codex-offered-office-hours': 'gate',
+  'codex-offered-ghee': 'gate',
   'codex-offered-ceo-review': 'gate',
   'codex-offered-design-review': 'gate',
   'codex-offered-eng-review': 'gate',
@@ -360,8 +360,8 @@ export const LLM_JUDGE_TOUCHFILES: Record<string, string[]> = {
   'design-consultation/SKILL.md research': ['design-consultation/SKILL.md', 'design-consultation/SKILL.md.tmpl'],
 
   // Office Hours
-  'office-hours/SKILL.md spec review':    ['office-hours/SKILL.md', 'office-hours/SKILL.md.tmpl', 'scripts/gen-skill-docs.ts'],
-  'office-hours/SKILL.md design sketch':  ['office-hours/SKILL.md', 'office-hours/SKILL.md.tmpl', 'scripts/gen-skill-docs.ts'],
+  'ghee/SKILL.md spec review':    ['ghee/SKILL.md', 'ghee/SKILL.md.tmpl', 'scripts/gen-skill-docs.ts'],
+  'ghee/SKILL.md design sketch':  ['ghee/SKILL.md', 'ghee/SKILL.md.tmpl', 'scripts/gen-skill-docs.ts'],
 
   // Deploy skills
   'land-and-deploy/SKILL.md workflow':    ['land-and-deploy/SKILL.md', 'land-and-deploy/SKILL.md.tmpl'],

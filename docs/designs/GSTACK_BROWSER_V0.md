@@ -197,7 +197,7 @@ Every gstack skill becomes a browser capability.
 | `/canary` | Monitor deployed site → screenshot periodically → alert on changes |
 | `/ship` | Run tests → review diff → create PR → verify deployment in browser |
 | `/cso` | Audit page for XSS, open redirects, clickjacking in real browser |
-| `/office-hours` | Browse competitor sites → synthesize observations → design doc |
+| `/ghee` | Browse competitor sites → synthesize observations → design doc |
 
 The command palette (Cmd+K) is the hub. You don't need to know the skills exist.
 You type what you want, the fuzzy filter finds the right skill, and the AI runs it

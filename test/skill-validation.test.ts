@@ -232,7 +232,7 @@ describe('Update check preamble', () => {
     'ship/SKILL.md', 'review/SKILL.md',
     'plan-ceo-review/SKILL.md', 'plan-eng-review/SKILL.md',
     'retro/SKILL.md',
-    'office-hours/SKILL.md', 'investigate/SKILL.md',
+    'ghee/SKILL.md', 'investigate/SKILL.md',
     'plan-design-review/SKILL.md',
     'design-review/SKILL.md',
     'design-consultation/SKILL.md',
@@ -551,7 +551,7 @@ describe('v0.4.1 preamble features', () => {
     'ship/SKILL.md', 'review/SKILL.md',
     'plan-ceo-review/SKILL.md', 'plan-eng-review/SKILL.md',
     'retro/SKILL.md',
-    'office-hours/SKILL.md', 'investigate/SKILL.md',
+    'ghee/SKILL.md', 'investigate/SKILL.md',
     'plan-design-review/SKILL.md',
     'design-review/SKILL.md',
     'design-consultation/SKILL.md',
@@ -591,8 +591,8 @@ describe('v0.4.1 preamble features', () => {
 
 // --- Structural tests for new skills ---
 
-describe('office-hours skill structure', () => {
-  const content = fs.readFileSync(path.join(ROOT, 'office-hours', 'SKILL.md'), 'utf-8');
+describe('ghee skill structure', () => {
+  const content = fs.readFileSync(path.join(ROOT, 'ghee', 'SKILL.md'), 'utf-8');
 
   // Original structural assertions
   for (const section of ['Phase 1', 'Phase 2', 'Phase 3', 'Phase 4', 'Phase 5', 'Phase 6',
@@ -895,9 +895,9 @@ describe('CEO review mode validation', () => {
   });
 
   // Skill chaining (benefits-from)
-  test('contains prerequisite skill offer for office-hours', () => {
+  test('contains prerequisite skill offer for ghee', () => {
     expect(content).toContain('Prerequisite Skill Offer');
-    expect(content).toContain('/office-hours');
+    expect(content).toContain('/ghee');
   });
 
   test('contains mid-session detection', () => {
@@ -1357,7 +1357,7 @@ describe('Skill trigger phrases', () => {
   // Excluded: root gstack (browser tool), gstack-upgrade (gstack-specific),
   // humanizer (text tool)
   const SKILLS_REQUIRING_TRIGGERS = [
-    'qa', 'qa-only', 'ship', 'review', 'investigate', 'office-hours',
+    'qa', 'qa-only', 'ship', 'review', 'investigate', 'ghee',
     'plan-ceo-review', 'plan-eng-review', 'plan-design-review',
     'design-review', 'design-consultation', 'retro', 'document-release',
     'codex', 'browse', 'setup-browser-cookies',
@@ -1377,7 +1377,7 @@ describe('Skill trigger phrases', () => {
 
   // Skills with proactive triggers should have "Proactively suggest" in description
   const SKILLS_REQUIRING_PROACTIVE = [
-    'qa', 'qa-only', 'ship', 'review', 'investigate', 'office-hours',
+    'qa', 'qa-only', 'ship', 'review', 'investigate', 'ghee',
     'plan-ceo-review', 'plan-eng-review', 'plan-design-review',
     'design-review', 'design-consultation', 'retro', 'document-release',
   ];

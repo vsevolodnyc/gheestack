@@ -16,7 +16,7 @@ No compatibility matrices. The prompt is the bridge.
   calendar, memory, EA                     methodology + planning
        │                                        │
        ├── Native skills (conversational)       ├── Generates native skills
-       │   office-hours, ceo-review,            │   via gen-skill-docs pipeline
+       │   ghee, ceo-review,            │   via gen-skill-docs pipeline
        │   investigate, retro                   │
        │                                        ├── Generates gstack-lite
        ├── sessions_spawn(runtime: "acp")       │   (planning discipline)
@@ -74,7 +74,7 @@ FULL: build a complete feature, multi-day scope, needs planning + review
 PLAN: user wants to plan a Claude Code project, spec out a feature, or design
   something before any code is written
 -> sessions_spawn(runtime: "acp", prompt: "<gstack-plan content>\n\n<task>")
-  Claude Code runs: /office-hours -> /autoplan -> saves plan file -> reports back
+  Claude Code runs: /ghee -> /autoplan -> saves plan file -> reports back
   The orchestrator persists the plan link to its memory/knowledge store.
   When the user is ready to implement, spawn a new FULL session pointing at the plan.
 ```
@@ -109,7 +109,7 @@ A/B tested: 2x time, meaningfully better output.
 
 ### gstack-plan (Plan tier)
 `openclaw/gstack-plan-CLAUDE.md` — full review gauntlet, no implementation:
-1. Run /office-hours to produce a design doc
+1. Run /ghee to produce a design doc
 2. Run /autoplan (CEO + eng + design + DX reviews + codex adversarial)
 3. Save the reviewed plan to `plans/<project-slug>-plan-<date>.md`
 4. Report back: plan path, summary, key decisions, recommended next step
@@ -120,7 +120,7 @@ ready to build, spawn a FULL session that references the saved plan.
 
 ### Native methodology skills
 Conversational skills for non-coding work, generated from gstack source templates:
-- `openclaw/office-hours.md` — Product interrogation (6 forcing questions)
+- `openclaw/ghee.md` — Product interrogation (6 forcing questions)
 - `openclaw/ceo-review.md` — Strategic challenge (10-section review, 4 modes)
 - `openclaw/investigate.md` — Operational debugging (4-phase methodology)
 - `openclaw/retro.md` — Operational retrospective (weekly review)
